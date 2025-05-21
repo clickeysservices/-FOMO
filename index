@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto Background</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #000 center center no-repeat fixed;
+      background-size: cover;
+      font-family: sans-serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Loading background...</h1>
+
+  <script>
+    // This only works when hosted (like on GitHub Pages), not from file://
+    async function setBackgroundImage() {
+      try {
+        const res = await fetch('./'); // fetch the directory listing
+        const text = await res.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+
+        const links = [...doc.querySelectorAll('a')];
+        const image = links
+          .map(link => link.getAttribute('href'))
+          .find(name => name && name.match(/\.(jpg|jpeg|png|gif|webp)$/i));
+
+        if (image) {
+          document.body.style.backgroundImage = `url('${image}')`;
+          document.querySelector('h1').textContent = `Background: ${image}`;
+        } else {
+          document.querySelector('h1').textContent = 'No image found in repo.';
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        document.querySelector('h1').textContent = 'Error loading image.';
+      }
+    }
+
+    setBackgroundImage();
+  </script>
+</body>
+</html>
