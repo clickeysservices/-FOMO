@@ -1,50 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-  body {
-    background-color: #000;
-    color: #fff;
-    font-family: 'Arial Black', Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-  }
-  .glow-text {
-    font-size: 4em;
-    font-weight: 900;
-    color: #ff0000;
-    text-shadow:
-      0 0 5px #ff0000,
-      0 0 10px #ff0000,
-      0 0 20px #ff0000,
-      0 0 40px #ff0000,
-      0 0 80px #ff0000;
-  }
-  .sub-text {
-    color: #ff0000;
-    font-size: 1.5em;
-    margin-top: 10px;
-    text-shadow: 0 0 8px #ff0000;
-  }
-  .emoji {
-    font-size: 2em;
-    margin-left: 10px;
-  }
-  .description {
-    margin-top: 20px;
-    font-size: 1em;
-    color: #fff;
-    opacity: 0.7;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Z-MENU | FiveM Aimbot & GFX</title>
+  <style>
+    body {
+      background: #0b0b0b;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      padding: 20px;
+      font-size: 1.3rem;
+    }
+    header a {
+      color: #ff2e63;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 30px;
+      text-align: center;
+    }
+    h1 {
+      color: #ff2e63;
+      font-size: 2.5rem;
+    }
+    .product {
+      background: #1a1a1a;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      width: 80%;
+    }
+    .btn {
+      background: #ff2e63;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #e0245e;
+    }
+    #popup, #codePopup {
+      background: #222;
+      color: #0f0;
+      padding: 15px;
+      border-radius: 10px;
+      display: none;
+      margin-top: 20px;
+    }
+    input {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="glow-text">VIP 20$ <span class="emoji">🔥🖥️✨</span></div>
-  <div class="sub-text">with MENU GRAPHICS PACKS</div>
-  <div class="sub-text">Type VIP in comments <span class="emoji">🅾️</span></div>
-  <div class="description">Join our Discord for exclusive access!</div>
+
+<header>
+  <div>💻 Z-MENU STORE 💻</div>
+  <a href="#" onclick="showOrderId()">📦 Get Order ID</a>
+</header>
+
+<div class="container">
+  <h1>🔥 FiveM Aimbot & GFX 🔥</h1>
+  <p>💥 Selling Z-MENU Aimbot for only <strong>$10</strong><br>
+     🖼️ Graphics Packs from <strong>$2-$10</strong><br>
+     🛒 Join our Discord: <a href="https://discord.gg/VqMgv2783X" target="_blank">Uzio Leaks</a></p>
+
+  <div class="product">
+    <h2>🎯 Z-MENU Aimbot - $10</h2>
+    <button class="btn" onclick="addToCart('Aimbot', 10)">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <h2>🎨 Graphics Pack - $2-$10</h2>
+    <button class="btn" onclick="addToCart('Graphics Pack', 5)">Add to Cart</button>
+  </div>
+
+  <div>
+    <h3>💸 Got a discount code?</h3>
+    <input type="text" id="discountInput" placeholder="Enter code e.g. uzi leaks" />
+    <button class="btn" onclick="applyCode()">Apply Code</button>
+    <div id="codePopup">✅ Code applied: 10% off granted!</div>
+  </div>
+
+  <div id="popup">
+    🎟️ Your Order ID: <span id="orderId"></span><br>
+    📩 Send this ID in Discord after purchase!
+  </div>
+</div>
+
+<script>
+  function showOrderId() {
+    const id = "ZMENU-" + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById("orderId").innerText = id;
+    document.getElementById("popup").style.display = "block";
+  }
+
+  function addToCart(item, price) {
+    alert(`✅ ${item} added to cart ($${price})`);
+  }
+
+  function applyCode() {
+    const code = document.getElementById("discountInput").value.trim().toLowerCase();
+    if (code === "uzi leaks") {
+      document.getElementById("codePopup").style.display = "block";
+    } else {
+      alert("❌ Invalid code");
+    }
+  }
+</script>
+
 </body>
 </html>
+
