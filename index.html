@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>UZI LEAKS | Z-MENU & GFX</title>
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
+      padding: 0;
+      overscroll-behavior-y: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    body {
       font-family: 'Arial', sans-serif;
       background: url('https://i.imgur.com/037MbLN.png') no-repeat center center fixed;
       background-size: cover;
@@ -37,6 +44,13 @@
       width: 90%;
       max-width: 900px;
       border-radius: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        background-color: transparent !important;
+        margin: 20px 10px;
+      }
     }
 
     .notice {
