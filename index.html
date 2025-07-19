@@ -3,127 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Z-MENU | FiveM Aimbot & GFX</title>
+  <title>UZI LEAKS | Z-MENU & GFX</title>
   <style>
     body {
-      background: #0b0b0b;
-      color: white;
-      font-family: 'Arial', sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: url('https://cdn.discordapp.com/attachments/1395404004774907934/1395951212364304384/image.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
     }
+
     header {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #111;
-      padding: 20px;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #ff2e63;
     }
+
     header a {
       color: #ff2e63;
       text-decoration: none;
       font-weight: bold;
     }
+
     .container {
-      padding: 30px;
+      padding: 40px 20px;
       text-align: center;
+      background-color: rgba(0, 0, 0, 0.65);
+      margin: 50px auto;
+      width: 90%;
+      max-width: 900px;
+      border-radius: 15px;
     }
-    h1 {
-      color: #ff2e63;
-      font-size: 2.5rem;
-    }
-    .product {
-      background: #1a1a1a;
-      padding: 20px;
-      margin: 20px auto;
+
+    .notice {
+      background: #ff2e63;
+      padding: 10px;
+      font-weight: bold;
       border-radius: 10px;
-      width: 80%;
+      margin-bottom: 20px;
     }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px black;
+    }
+
+    .product {
+      background: rgba(255, 255, 255, 0.05);
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ff2e63;
+      border-radius: 10px;
+    }
+
     .btn {
       background: #ff2e63;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 25px;
       color: white;
-      border-radius: 8px;
       font-size: 1rem;
+      border-radius: 8px;
+      margin-top: 10px;
       cursor: pointer;
+      transition: 0.2s;
     }
+
     .btn:hover {
-      background: #e0245e;
+      background: #e6004c;
     }
+
     #popup, #codePopup {
-      background: #222;
-      color: #0f0;
-      padding: 15px;
-      border-radius: 10px;
       display: none;
       margin-top: 20px;
+      background: rgba(0, 255, 0, 0.2);
+      padding: 15px;
+      border: 1px solid #0f0;
+      border-radius: 10px;
+      font-weight: bold;
     }
-    input {
+
+    input[type="text"] {
       padding: 10px;
-      margin-top: 10px;
       border-radius: 8px;
       border: none;
+      margin-top: 10px;
+      width: 200px;
+    }
+
+    a.discord {
+      display: inline-block;
+      margin-top: 20px;
+      color: #7289da;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .emoji {
+      font-size: 1.3em;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div>💻 Z-MENU STORE 💻</div>
-  <a href="#" onclick="showOrderId()">📦 Get Order ID</a>
-</header>
+  <header>
+    <div>💻 UZI LEAKS STORE</div>
+    <a href="#" onclick="showOrderId()">📦 Get Order ID</a>
+  </header>
 
-<div class="container">
-  <h1>🔥 FiveM Aimbot & GFX 🔥</h1>
-  <p>💥 Selling Z-MENU Aimbot for only <strong>$10</strong><br>
-     🖼️ Graphics Packs from <strong>$2-$10</strong><br>
-     🛒 Join our Discord: <a href="https://discord.gg/VqMgv2783X" target="_blank">Uzio Leaks</a></p>
+  <div class="container">
+    <div class="notice">⚠️ YOU MUST JOIN THE DISCORD TO BUY — <a class="discord" href="https://discord.gg/VqMgv2783X" target="_blank">JOIN HERE</a></div>
 
-  <div class="product">
-    <h2>🎯 Z-MENU Aimbot - $10</h2>
-    <button class="btn" onclick="addToCart('Aimbot', 10)">Add to Cart</button>
+    <h1>🎯 Z-MENU AIMBOT & GFX 🖼️</h1>
+    <p>Only $10 for Z-MENU aimbot 💻<br>Graphics packs from $2-$10 🎨</p>
+
+    <div class="product">
+      <h2>🎮 Z-MENU Aimbot – $10</h2>
+      <button class="btn" onclick="addToCart('Z-MENU Aimbot', 10)">🛒 Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <h2>🎨 Graphics Pack – $5</h2>
+      <button class="btn" onclick="addToCart('Graphics Pack', 5)">🛒 Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <h3>💸 Got a Discount Code?</h3>
+      <input type="text" id="discountInput" placeholder="Enter code e.g. uzi leaks">
+      <button class="btn" onclick="applyCode()">Apply</button>
+      <div id="codePopup">✅ Code Works: 10% OFF Applied!</div>
+    </div>
+
+    <div id="popup">
+      🎟️ Your Order ID: <span id="orderId"></span><br>
+      📩 Send this ID in Discord when you pay!
+    </div>
   </div>
 
-  <div class="product">
-    <h2>🎨 Graphics Pack - $2-$10</h2>
-    <button class="btn" onclick="addToCart('Graphics Pack', 5)">Add to Cart</button>
-  </div>
-
-  <div>
-    <h3>💸 Got a discount code?</h3>
-    <input type="text" id="discountInput" placeholder="Enter code e.g. uzi leaks" />
-    <button class="btn" onclick="applyCode()">Apply Code</button>
-    <div id="codePopup">✅ Code applied: 10% off granted!</div>
-  </div>
-
-  <div id="popup">
-    🎟️ Your Order ID: <span id="orderId"></span><br>
-    📩 Send this ID in Discord after purchase!
-  </div>
-</div>
-
-<script>
-  function showOrderId() {
-    const id = "ZMENU-" + Math.floor(100000 + Math.random() * 900000);
-    document.getElementById("orderId").innerText = id;
-    document.getElementById("popup").style.display = "block";
-  }
-
-  function addToCart(item, price) {
-    alert(`✅ ${item} added to cart ($${price})`);
-  }
-
-  function applyCode() {
-    const code = document.getElementById("discountInput").value.trim().toLowerCase();
-    if (code === "uzi leaks") {
-      document.getElementById("codePopup").style.display = "block";
-    } else {
-      alert("❌ Invalid code");
+  <script>
+    function showOrderId() {
+      const id = "UZI-" + Math.floor(100000 + Math.random() * 900000);
+      document.getElementById("orderId").innerText = id;
+      document.getElementById("popup").style.display = "block";
     }
-  }
-</script>
+
+    function addToCart(item, price) {
+      alert(`✅ ${item} added to cart ($${price})`);
+    }
+
+    function applyCode() {
+      const input = document.getElementById("discountInput").value.trim().toLowerCase();
+      if (input === "uzi leaks") {
+        document.getElementById("codePopup").style.display = "block";
+      } else {
+        alert("❌ Invalid code");
+      }
+    }
+  </script>
 
 </body>
 </html>
